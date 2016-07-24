@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dikshay.mobilecomputing.assignments.ifthisthenthat">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+    <application
+        android:name=".googledrive.ApplicationClass"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+
+            <!-- <meta-data android:name="com.google.android.apps.drive.APP_ID" android:value="@string/google_app_id" /> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".battery.BatteryService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".battery.BatteryDisconnectDataService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".battery.BatterySendMessageService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".ImageUpload.ImageUploadDropboxService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".ImageUpload.ImageUploadDriveService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".receipes.BatteryReduceBrightness" />
+        <activity
+            android:name=".battery.DummyBrightnessActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity="com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery.Dummy"
+            android:theme="@style/EmptyActivity" />
+        <activity android:name=".receipes.BatteryDisconnectData" />
+        <activity android:name=".receipes.BatterySendMessage" />
+        <activity android:name=".receipes.NewImageUploadToDropbox" />
+        <activity android:name=".receipes.NewImageUploadToDrive" />
+        <activity
+            android:name=".activity.HomeWifiToggle"
+            android:label="@string/title_activity_home_wifi_toggle" />
+        <activity
+            android:name=".activity.ClassRingerToggle"
+            android:label="@string/title_activity_class_ringer_toggle" />
+        <activity
+            android:name=".activity.ClassCancelCall"
+            android:label="@string/title_activity_class_cancel_call" />
+        <activity
+            android:name=".activity.GymTrackTime"
+            android:label="@string/title_activity_gym_track_time" />
+        <activity
+            android:name=".activity.ConnectToDropbox"
+            android:label="@string/title_activity_connect_to_dropbox" />
+        <activity
+            android:name=".activity.CallLogsDropbox"
+            android:label="@string/title_activity_call_logs_dropbox" />
+        <activity
+            android:name=".activity.NotifyFriendLocation"
+            android:label="@string/title_activity_notify_friend_location" />
+        <activity
+            android:name="com.dropbox.client2.android.AuthActivity"
+            android:configChanges="keyboard"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <data android:scheme="db-4zl9w2eamzbaiyt" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.LocationService" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <receiver android:name=".broadcast.PhoneStateReceiver">
+            <intent-filter android:priority="0">
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Register the Alarm Receiver -->
+        <receiver android:name=".alarmReceiver" />
+        <receiver android:name=".emailReceiver" />
+        <receiver android:name=".weatherReceiver" />
+
+        <activity
+            android:name=".activity.SmsTask"
+            android:label="@string/title_activity_sms_task" />
+        <activity
+            android:name=".activity.MailTask"
+            android:label="@string/title_activity_mail_task" />
+        <activity
+            android:name=".activity.WeatherTask"
+            android:label="@string/title_activity_weather_task" />
+    </application>
+
+</manifest>

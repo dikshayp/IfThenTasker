@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.SmsTask"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/meditText"
+        android:layout_gravity="center_horizontal"
+        android:hint="Enter Mail id  " />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/meditText2"
+        android:layout_gravity="center_horizontal"
+        android:hint="Enter Subject " />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/meditText3"
+        android:layout_gravity="center_horizontal"
+        android:hint="Enter Body" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mdatePicker"
+        android:spinnersShown="false"
+        android:datePickerMode="calendar"
+        android:layout_gravity="center_horizontal"/>
+
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mtimePicker"
+        android:timePickerMode="spinner"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Schedule for mail"
+        android:id="@+id/mbutton"
+        android:layout_gravity="center_horizontal"
+
+        />
+
+</LinearLayout>
+</ScrollView>

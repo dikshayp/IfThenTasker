@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "stable-snowfall-129022",
+    "project_number": "133249340347",
+    "name": "My Project"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133249340347:android:a023b68eb3a092d9",
+        "client_id": "android:com.dikshay.mobilecomputing.assignments.ifthisthenthat",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.dikshay.mobilecomputing.assignments.ifthisthenthat",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133249340347-fqoj2im8v1eri393t3eqdc4ab7cvracq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dikshay.mobilecomputing.assignments.ifthisthenthat",
+            "certificate_hash": "BE1801EAD19C75493B8BAAB1750FACAF4559B350"
+          }
+        },
+        {
+          "client_id": "133249340347-m1g922uba1eloh2eqk7v7p9j2dptqdam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
