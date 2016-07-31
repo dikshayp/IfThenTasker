@@ -1,10 +1,12 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.WeatherServiceAsync;
 
 /**
  * Created by User847 on 5/2/2016.

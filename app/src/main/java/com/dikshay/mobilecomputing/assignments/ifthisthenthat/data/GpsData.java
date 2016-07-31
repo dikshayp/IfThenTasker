@@ -21,8 +21,6 @@ public class GpsData {
     private static Location gymLocation;
     private static Location notifyFriendLocation;
 
-    private static DropboxAPI dropboxApi;
-
     //flag to check if in class
     private static boolean inClass = false;
     //private static String mobileNumber = "";
@@ -118,14 +116,6 @@ public class GpsData {
 
     public static Location getDoNotDisturbLocation() {
         return GpsData.doNotDisturbLocation;
-    }
-
-    public static void setDropboxApi(DropboxAPI dropboxApi) {
-        GpsData.dropboxApi = dropboxApi;
-    }
-
-    public static DropboxAPI getDropboxApi() {
-        return GpsData.dropboxApi;
     }
 
     public static void setNotifyFriendLocation(Location notifyFriendLocation) {

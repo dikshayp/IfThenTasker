@@ -18,6 +18,7 @@ import android.widget.ToggleButton;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.CallLogsData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.LocationService;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -59,7 +60,7 @@ public class CallLogsDropbox extends Activity{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
-                    if (GpsData.getDropboxApi() == null)
+                    if (FileServerData.getDropboxApi() == null)
                         startActivity(new Intent(CallLogsDropbox.this, ConnectToDropbox.class));
                     CallLogsData.setRecordLogs(true);
 

@@ -65,8 +65,8 @@ public class LocationService extends Service implements LocationListener {
     Location gymLocation;
     Location notifyFriendLocation;
 
-    private static final long MIN_DIST_FOR_UPDATE = 10;
-    private static final long MIN_TIME_FOR_UPDATE = 1000 * 5;
+    private static final long MIN_DIST_FOR_UPDATE = 0;
+    private static final long MIN_TIME_FOR_UPDATE = 10;
 
     protected LocationManager locationManager;
     Location location;
@@ -78,13 +78,14 @@ public class LocationService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        Log.d("onStartCommand ", "Something");
+        Log.d("LocationService ", "onStartCommand");
         getLocation();
         return START_STICKY;
     }
 
     public Location getLocation() {
         try {
+            Log.d("LocationService ", "getLocation");
             locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
             isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -92,8 +93,10 @@ public class LocationService extends Service implements LocationListener {
             if (!isGPSEnabled && !isNetworkEnabled) {
 
             } else {
+                Log.d("LocationService ", "getLocation - service enabled");
                 this.canGetLocation = true;
                 if (isNetworkEnabled) {
+                    Log.d("LocationService ", "COnst - " + Constants.MY_PERMISSIONS_REQUEST_FINE_LOCATION);
                     locationManager.requestLocationUpdates(
                             LocationManager.NETWORK_PROVIDER,
                             MIN_TIME_FOR_UPDATE,
@@ -125,9 +128,11 @@ public class LocationService extends Service implements LocationListener {
             }
 
         } catch (SecurityException se){
+            Log.d("LocationService ", "getLocation - exception");
             se.printStackTrace();
 
         }catch (Exception e) {
+            Log.d("LocationService ", "getLocation - exception");
             e.printStackTrace();
         }
 
@@ -368,11 +373,7 @@ public class LocationService extends Service implements LocationListener {
             Log.d("TAG","message:" + message);
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNumber, null, message, null, null);
-            //Toast.makeText(context, "Message Sent",
-            //        Toast.LENGTH_LONG).show();
         } catch (Exception ex) {
-            //Toast.makeText(context,ex.getMessage().toString(),
-            //        Toast.LENGTH_LONG).show();
             ex.printStackTrace();
         }
     }
@@ -416,6 +417,8 @@ public class LocationService extends Service implements LocationListener {
             Log.d("Notify Friend", "Flag Set");
             notifyFriend();
         }
+
+        // stop service if none active
     }
 
     @Override

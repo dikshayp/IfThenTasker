@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.service;
 
 import android.app.Activity;
 import android.app.Service;
@@ -9,7 +9,9 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData_d;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.googledrive.ApplicationClass;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.observer.MediaObserver;
@@ -47,13 +49,13 @@ public class ImageUploadDriveService extends Service implements
     {
         Log.d(TAG,"request received");
         MediaObserver mediaObserver;
-        if(GpsData_d.getObserver()==null)
+        if(FileServerData.getObserver()==null)
         {
-            GpsData_d.setObserver(new MediaObserver(new Handler()));
+            FileServerData.setObserver(new MediaObserver(new Handler()));
         }
-        mediaObserver = GpsData_d.getObserver();
+        mediaObserver = FileServerData.getObserver();
         //MediaObserver mediaObserver = new MediaObserver(new Handler(),getApplicationContext(), Constants_d.GOOGLE_DRIVE);
-        mediaObserver.config(getApplicationContext(), Constants_d.GOOGLE_DRIVE);
+        mediaObserver.config(getApplicationContext(), Constants.GOOGLE_DRIVE);
         mediaObserver.observe();
 
         //mediaObserver.getNewMedia();
@@ -66,7 +68,7 @@ public class ImageUploadDriveService extends Service implements
             googleApiClient.connect();
         }
         mediaObserver.setmGoogleApiClient(googleApiClient);
-        GpsData_d.setIsDriveActive(true);
+        FileServerData.setIsDriveActive(true);
         return START_STICKY;
     }
     @Override
@@ -74,7 +76,7 @@ public class ImageUploadDriveService extends Service implements
         Log.i(TAG, "in onConnected() - we're connected, let's do the work in the background...");
         Log.d(TAG,"Connected in service");
         ApplicationClass.setGoogleApiClient(googleApiClient);
-        GpsData_d.setIsDriveActive(true);
+        FileServerData.setIsDriveActive(true);
 
     }
     @Override
@@ -120,7 +122,7 @@ public class ImageUploadDriveService extends Service implements
                     .build();
             ApplicationClass.setGoogleApiClient(googleApiClient);
         }
-        GpsData_d.setIsDriveActive(false);
+        FileServerData.setIsDriveActive(false);
     }
 
 }

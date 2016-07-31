@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity;
 
 import android.app.Activity;
 import android.content.Intent;

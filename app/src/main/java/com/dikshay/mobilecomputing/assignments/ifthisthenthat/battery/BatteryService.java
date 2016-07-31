@@ -17,7 +17,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.DummyBrightnessActivity;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
 
 public class BatteryService extends Service {
     private static final String TAG = "BatteryService";
@@ -61,7 +62,7 @@ public class BatteryService extends Service {
     {
         Log.d(TAG, "Service Starting");
         //here 0 is the default value
-        batterylevelReduceBrightness = intent.getIntExtra(Constants_d.BATTERY_LEVEL,0);
+        batterylevelReduceBrightness = intent.getIntExtra(Constants.BATTERY_LEVEL,0);
         Log.d(TAG,"Service received battery level as"+batterylevelReduceBrightness);
         Message message = mServiceHandler.obtainMessage();
         message.arg1 = startId;

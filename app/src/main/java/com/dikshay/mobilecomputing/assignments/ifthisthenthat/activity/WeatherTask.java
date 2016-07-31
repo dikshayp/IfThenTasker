@@ -14,9 +14,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.AlarmData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.AlarmData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.weatherReceiver;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.broadcast.weatherReceiver;
 
 import java.util.Calendar;
 

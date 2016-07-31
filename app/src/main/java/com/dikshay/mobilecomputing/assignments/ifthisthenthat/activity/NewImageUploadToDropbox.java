@@ -1,19 +1,14 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload.ImageUploadDriveService;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload.ImageUploadDropboxService;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.ImageUploadDropboxService;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.CallLogsData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.UploadData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.googledrive.ApplicationClass;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper.UploadData;
 
 public class NewImageUploadToDropbox extends AppCompatActivity {
 

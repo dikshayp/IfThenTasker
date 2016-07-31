@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.exception.DropboxException;
@@ -25,7 +26,7 @@ public class UploadFile extends AsyncTask<Void, Void, Boolean>{
 
     public UploadFile(Context context, String file) {
         super();
-        this.dropboxAPI = GpsData.getDropboxApi();
+        this.dropboxAPI = FileServerData.getDropboxApi();
         this.path = Constants.DROPBOX_FILE_DIR;
         this.context = context;
         this.file = file;

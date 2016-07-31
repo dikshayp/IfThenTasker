@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.android.AndroidAuthSession;
@@ -96,7 +97,7 @@ public class ConnectToDropbox extends AppCompatActivity implements View.OnClickL
                             ((AndroidAuthSession) dropboxAPI.getSession())
                             .startAuthentication(ConnectToDropbox.this);
                 }
-                GpsData.setDropboxApi(dropboxAPI);
+                FileServerData.setDropboxApi(dropboxAPI);
                 GpsData.setRecordGymTime(true);
                 break;
             default:

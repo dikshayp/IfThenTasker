@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData_d;
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.exception.DropboxException;
@@ -51,7 +53,7 @@ public class UploadFile_d extends AsyncTask<String, Void, Boolean> {
             Log.d(TAG, "gname is :" + fileName);
             File myFile = new File(path);
             FileInputStream fileInputStream = new FileInputStream(myFile);
-            DropboxAPI dropboxAPI = GpsData_d.getDropboxApi();
+            DropboxAPI dropboxAPI = FileServerData.getDropboxApi();
             dropboxAPI.putFileOverwrite("/DropboxDemo/" + fileName, fileInputStream,
                     myFile.length(), null);
             return true;

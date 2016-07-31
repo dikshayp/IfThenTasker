@@ -47,32 +47,32 @@
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".battery.BatteryDisconnectDataService"
+            android:name=".service.BatteryDisconnectDataService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".battery.BatterySendMessageService"
+            android:name=".service.BatterySendMessageService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".ImageUpload.ImageUploadDropboxService"
+            android:name=".service.ImageUploadDropboxService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".ImageUpload.ImageUploadDriveService"
+            android:name=".service.ImageUploadDriveService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".receipes.BatteryReduceBrightness" />
+        <activity android:name=".activity.BatteryReduceBrightness" />
         <activity
-            android:name=".battery.DummyBrightnessActivity"
+            android:name=".activity.DummyBrightnessActivity"
             android:excludeFromRecents="true"
             android:taskAffinity="com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery.Dummy"
             android:theme="@style/EmptyActivity" />
-        <activity android:name=".receipes.BatteryDisconnectData" />
-        <activity android:name=".receipes.BatterySendMessage" />
-        <activity android:name=".receipes.NewImageUploadToDropbox" />
-        <activity android:name=".receipes.NewImageUploadToDrive" />
+        <activity android:name=".activity.BatteryDisconnectData" />
+        <activity android:name=".activity.BatterySendMessage" />
+        <activity android:name=".activity.NewImageUploadToDropbox" />
+        <activity android:name=".activity.NewImageUploadToDrive" />
         <activity
             android:name=".activity.HomeWifiToggle"
             android:label="@string/title_activity_home_wifi_toggle" />
@@ -118,7 +118,7 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
+            android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <receiver android:name=".broadcast.PhoneStateReceiver">
@@ -129,9 +129,9 @@
         </receiver>
 
         <!-- Register the Alarm Receiver -->
-        <receiver android:name=".alarmReceiver" />
-        <receiver android:name=".emailReceiver" />
-        <receiver android:name=".weatherReceiver" />
+        <receiver android:name=".broadcast.alarmReceiver" />
+        <receiver android:name=".broadcast.emailReceiver" />
+        <receiver android:name=".broadcast.weatherReceiver" />
 
         <activity
             android:name=".activity.SmsTask"

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.MainActivity;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.CallLogsDropbox;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.ClassCancelCall;
@@ -22,13 +21,11 @@ import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.NotifyFri
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.SmsTask;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.WeatherTask;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.adapter.MyArrayAdapter;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery.BatteryService;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.googledrive.TestActivity;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.BatteryDisconnectData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.BatteryReduceBrightness;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.BatterySendMessage;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.NewImageUploadToDrive;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.NewImageUploadToDropbox;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.BatteryDisconnectData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.BatteryReduceBrightness;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.BatterySendMessage;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.NewImageUploadToDrive;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.NewImageUploadToDropbox;
 
 
 /**
@@ -36,7 +33,7 @@ import com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes.NewImageU
  */
 public class MainFragment extends Fragment{
     private String[] data={"Reduce brightness on battery","Disconnect wifi on battery","Send Message on battery",
-    "Upload To Dropbox","Connect to Google Drive", "Home Wifi Toggle", "Class Ringtone Toggle", "Class Do Not Disturb",
+    "Upload New Image To Dropbox","Upload New Image to Google Drive", "Home Wifi Toggle", "Class Ringtone Toggle", "Class Do Not Disturb",
             "Gym Track Time", "Mantain Call Logs", "Notify Friend", "Schedule Sms", "Schedule Mail", "Get Weather"};
     private ListView mainFragmentListView;
     @Override
@@ -80,52 +77,52 @@ public class MainFragment extends Fragment{
                     startActivity(intent);
                     break;
                 case 4:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Upload To Google Drive");
                     intent = new Intent(getActivity(), NewImageUploadToDrive.class);
                     startActivity(intent);
                     break;
                 case 5:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Home Wifi Toggle");
                     intent = new Intent(getActivity(), HomeWifiToggle.class);
                     startActivity(intent);
                     break;
                 case 6:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Class Ringtone Toggle");
                     intent = new Intent(getActivity(), ClassRingerToggle.class);
                     startActivity(intent);
                     break;
                 case 7:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Class Cancel Call Toggle");
                     intent = new Intent(getActivity(), ClassCancelCall.class);
                     startActivity(intent);
                     break;
                 case 8:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Track Gym Time");
                     intent = new Intent(getActivity(), GymTrackTime.class);
                     startActivity(intent);
                     break;
                 case 9:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Upload Call Logs to Dropbox");
                     intent = new Intent(getActivity(), CallLogsDropbox.class);
                     startActivity(intent);
                     break;
                 case 10:
-                    Log.d("ListView", "testing google drive api");
+                    Log.d("ListView", "Notify Friend Of Your Location");
                     intent = new Intent(getActivity(), NotifyFriendLocation.class);
                     startActivity(intent);
                     break;
                 case 11:
-                    Log.d("ListView", "schedule sms");
+                    Log.d("ListView", "Schedule Sms");
                     intent = new Intent(getActivity(), SmsTask.class);
                     startActivity(intent);
                     break;
                 case 12:
-                    Log.d("ListView", "schedule mail");
+                    Log.d("ListView", "Schedule Mail");
                     intent = new Intent(getActivity(), MailTask.class);
                     startActivity(intent);
                     break;
                 case 13:
-                    Log.d("ListView", "weather app");
+                    Log.d("ListView", "Weather Task");
                     intent = new Intent(getActivity(), WeatherTask.class);
                     startActivity(intent);
                     break;

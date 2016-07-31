@@ -14,9 +14,12 @@ import android.provider.MediaStore;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload.UploadFile_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper.UploadFile_d;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants_d;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData_d;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.googledrive.ApplicationClass;
 import com.dropbox.client2.DropboxAPI;
@@ -74,11 +77,11 @@ import java.util.Set;
         {
 
 
-            if(callingService.equals(Constants_d.GOOGLE_DRIVE))
+            if(callingService.equals(Constants.GOOGLE_DRIVE))
             {
                 gGoogleDriveContext = context;
             }
-            else if(callingService.equals(Constants_d.DROPBOX))
+            else if(callingService.equals(Constants.DROPBOX))
             {
                 gDropBoxServiceContext = context;
                 uploadFileD = new UploadFile_d(gDropBoxServiceContext);
@@ -164,12 +167,12 @@ import java.util.Set;
                             image_id.add("e_" + id);
                             gpath = filePath;
                             gName = fileName;
-                            if(GpsData_d.getIsDriveActive()) {
+                            if(FileServerData.getIsDriveActive()) {
                                 Log.d(TAG,"DriveActive");
                                 Drive.DriveApi.newDriveContents(mGoogleApiClient)
                                         .setResultCallback(driveContentsCallback);
                             }
-                            if(GpsData_d.getIsDropBoxActive())
+                            if(FileServerData.getIsDropBoxActive())
                             {
                                 Log.d(TAG,"DropboxActive");
                                 if(uploadFileD==null) {
@@ -209,13 +212,13 @@ import java.util.Set;
                             image_id.add("i_" + id);
                             gpath = filePath;
                             gName = fileName;
-                            if(GpsData_d.getIsDriveActive()) {
+                            if(FileServerData.getIsDriveActive()) {
                                 Log.d(TAG,"Drive Active");
                                 Drive.DriveApi.newDriveContents(mGoogleApiClient)
                                         .setResultCallback(driveContentsCallback);
                             }
 
-                            if(GpsData_d.getIsDropBoxActive())
+                            if(FileServerData.getIsDropBoxActive())
                             {
                                 Log.d(TAG,"Dropbox Active");
                                 if(uploadFileD==null) {
@@ -447,7 +450,7 @@ import java.util.Set;
                 Log.d(TAG,"gname is :" + gName);
                 File myFile = new File(gpath);
                 FileInputStream fileInputStream = new FileInputStream(myFile);
-                DropboxAPI dropboxAPI = GpsData_d.getDropboxApi();
+                DropboxAPI dropboxAPI = FileServerData.getDropboxApi();
                 dropboxAPI.putFileOverwrite("/DropboxDemo/" + gName, fileInputStream,
                         myFile.length(), null);
             }

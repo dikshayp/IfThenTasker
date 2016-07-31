@@ -1,21 +1,16 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity;
 
 import android.content.Intent;
 import android.content.IntentSender;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload.ImageUploadDriveService;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.ImageUploadDriveService;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity.ConnectToDropbox;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.CallLogsData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.UploadData;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper.UploadData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.googledrive.ApplicationClass;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;

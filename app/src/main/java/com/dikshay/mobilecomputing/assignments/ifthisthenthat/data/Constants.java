@@ -41,4 +41,19 @@ public class Constants {
     //for automated mail task
     public final static String EMAIL_ID = "ifthentasker@gmail.com";
     public final static String PASSWORD = "abdul1234";
+
+    //permissions
+    public final static int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 0;
+    public final static int MY_PERMISSIONS_REQUEST_COARSE_LOCATION = 0;
+    public final static int MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 0;
+
+    // Dikshay
+    public static final String BATTERY_LEVEL = "battery_level";
+    public static final String PHONE_NUMBER = "phone_number";
+    public static final String MESSAGE = "message";
+    public static final String GOOGLE_API_CLIENT = "google_api_client";
+
+    public final static String DROPBOX = "dropbox";
+    public final static String GOOGLE_DRIVE = "googledrive";
+    // Dikshay End
 }

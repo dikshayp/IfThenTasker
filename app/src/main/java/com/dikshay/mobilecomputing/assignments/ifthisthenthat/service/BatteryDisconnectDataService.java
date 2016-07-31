@@ -1,29 +1,29 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.service;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.IBinder;
-import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants_d;
 
 /**
  * Created by Dikshay on 4/18/2016.
  */
-public class BatterySendMessageService extends Service {
+public class BatteryDisconnectDataService extends Service {
+
     private static final String TAG = "BatteryService";
     private int previousBatteryLevel;
     private boolean firstBatteryRecord = true;
-    private int batterylevelSendMessage = 0;
-    String phoneNumber="";
-    String message="";
-    public BatterySendMessageService()
+    private int batterylevelDisconnectData = 0;
+    public BatteryDisconnectDataService()
     {
 
     }
@@ -42,10 +42,8 @@ public class BatterySendMessageService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        batterylevelSendMessage = intent.getIntExtra(Constants_d.BATTERY_LEVEL,0);
-        phoneNumber = intent.getStringExtra(Constants_d.PHONE_NUMBER);
-        message = intent.getStringExtra(Constants_d.MESSAGE);
-        Log.d(TAG,"Service received battery level as"+batterylevelSendMessage);
+        batterylevelDisconnectData = intent.getIntExtra(Constants.BATTERY_LEVEL,0);
+        Log.d(TAG,"Service received battery level as"+batterylevelDisconnectData);
         return START_REDELIVER_INTENT;
 
     }
@@ -56,19 +54,12 @@ public class BatterySendMessageService extends Service {
         Log.d("service done", "Battery Service execution done");
         unregisterReceiver(ConnectionReceiver);
     }
-    private void sendMessage(String phoneNumber,String message)
+    private void disconnectWifi(Context context)
     {
-        try {
-            Log.d(TAG,"phoneNumber:" + phoneNumber);
-            Log.d(TAG,"message:" + message);
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent",
-                    Toast.LENGTH_LONG).show();
-        } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
-                    Toast.LENGTH_LONG).show();
-            ex.printStackTrace();
+        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        if(wifiManager.isWifiEnabled())
+        {
+            wifiManager.setWifiEnabled(false);
         }
     }
     private BroadcastReceiver ConnectionReceiver = new BroadcastReceiver() {
@@ -81,14 +72,13 @@ public class BatterySendMessageService extends Service {
             Log.d(TAG,String.valueOf(currentBatteryLevel));
             if(firstBatteryRecord)
             {
-                if(currentBatteryLevel ==batterylevelSendMessage)
+                if(currentBatteryLevel ==batterylevelDisconnectData)
                 {
                     Log.d(TAG,"CurrentBatteryLevel:"+currentBatteryLevel);
                     Log.d(TAG,"PreviousBatteryLevel:"+previousBatteryLevel);
                     Toast.makeText(context,"Condition met for disconnect wifi",Toast.LENGTH_LONG).show();
                     //reduceBrightness(0.1f);
-                    //disconnectWifi(context);
-                    sendMessage(phoneNumber,message);
+                    disconnectWifi(context);
                 }
                 Log.d(TAG,"CurrentBatteryLevel:"+currentBatteryLevel);
                 Log.d(TAG,"PreviousBatteryLevel:"+previousBatteryLevel);
@@ -99,14 +89,13 @@ public class BatterySendMessageService extends Service {
             {
                 if(Math.abs(previousBatteryLevel-currentBatteryLevel)==1)
                 {
-                    if(currentBatteryLevel ==batterylevelSendMessage)
+                    if(currentBatteryLevel ==batterylevelDisconnectData)
                     {
                         Log.d(TAG,"CurrentBatteryLevel:"+currentBatteryLevel);
                         Log.d(TAG,"PreviousBatteryLevel:"+previousBatteryLevel);
                         Toast.makeText(context,"Condition met for disconncect wifi",Toast.LENGTH_LONG).show();
                         //reduceBrightness(0.1f);
-                        //disconnectWifi(context);
-                        sendMessage(phoneNumber,message);
+                        disconnectWifi(context);
                     }
                     previousBatteryLevel = currentBatteryLevel;
                 }
@@ -127,4 +116,5 @@ public class BatterySendMessageService extends Service {
             // Intent intent = new Intent(this,Notification)
         }
     };
+
 }
