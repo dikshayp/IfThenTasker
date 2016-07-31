@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper.GMailSender;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.AlarmData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
 
 

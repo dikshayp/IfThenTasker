@@ -16,6 +16,7 @@ import android.widget.ToggleButton;
 
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.FileServerData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.GpsData;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.LocationService;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -155,7 +156,7 @@ public class GymTrackTime extends FragmentActivity implements OnMapReadyCallback
                     //GpsData.setRecordGymTime(true);
 
                     //lets try creating a file
-                    if(GpsData.getDropboxApi() == null)
+                    if(FileServerData.getDropboxApi() == null)
                         startActivity(new Intent(GymTrackTime.this, ConnectToDropbox.class));
 
                 } else {

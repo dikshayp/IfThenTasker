@@ -11,16 +11,6 @@ public class CallLogsData {
 
     private static boolean recordLogs = false;
 
-    private static DropboxAPI dropboxApi;
-
-    public static void setDropboxApi(DropboxAPI dropboxApi) {
-        CallLogsData.dropboxApi = dropboxApi;
-    }
-
-    public static DropboxAPI getDropboxApi() {
-        return CallLogsData.dropboxApi;
-    }
-
     public static void setRecordLogs(boolean recordLogs) {
         CallLogsData.recordLogs = recordLogs;
     }

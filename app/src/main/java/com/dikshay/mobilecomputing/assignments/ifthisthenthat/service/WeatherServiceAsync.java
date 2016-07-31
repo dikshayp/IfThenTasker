@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -6,6 +6,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.AlarmData;
 
 import org.json.JSONObject;
 
@@ -30,7 +33,7 @@ public class WeatherServiceAsync extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... urls) {
         try {
-            String BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" +AlarmData.STATE +"%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+            String BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + AlarmData.STATE +"%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
             con = (HttpURLConnection) (new URL(BASE_URL)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);

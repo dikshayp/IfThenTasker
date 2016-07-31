@@ -1,12 +1,16 @@
 package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,6 +28,7 @@ import android.widget.Toast;
 
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.adapter.MyArrayAdapter;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery.BatteryService;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.fragments.MainFragment;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.LocationService;
 
@@ -65,10 +70,39 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().replace(R.id.frame_container,fragment).commit();
 
 
+        //needed for android v 6.0 and sdk v 24.0
+        checkPermissions();
         //Intent intent = new Intent(this, BatteryService.class);
         //startService(intent);
 
 
+    }
+
+    private void checkPermissions(){
+        //Location Permission
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    Constants.MY_PERMISSIONS_REQUEST_FINE_LOCATION);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    Constants.MY_PERMISSIONS_REQUEST_COARSE_LOCATION);
+        }
+
+        //Access External Storage Permissions
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    Constants.MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE);
+        }
     }
     private void createView()
     {

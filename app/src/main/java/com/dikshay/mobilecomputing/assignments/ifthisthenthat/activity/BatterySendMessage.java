@@ -1,23 +1,20 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat.receipes;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.ImageUpload.ImageUploadDropboxService;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.R;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Constants_d;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.Constants_d;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.Utils.Utilities;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.battery.BatterySendMessageService;
+import com.dikshay.mobilecomputing.assignments.ifthisthenthat.service.BatterySendMessageService;
 import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.BatteryData;
-import com.dikshay.mobilecomputing.assignments.ifthisthenthat.data.CallLogsData;
 
 public class BatterySendMessage extends AppCompatActivity {
     String TAG = "Battery Send Message";
@@ -82,9 +79,9 @@ public class BatterySendMessage extends AppCompatActivity {
                         BatteryData.setIsBatterySms(true);
 
                         Intent intent = new Intent(BatterySendMessage.this, BatterySendMessageService.class);
-                        intent.putExtra(Constants_d.BATTERY_LEVEL, Integer.parseInt(batteryLevelText.toString()));
-                        intent.putExtra(Constants_d.PHONE_NUMBER, mobileNumber);
-                        intent.putExtra(Constants_d.MESSAGE, message);
+                        intent.putExtra(Constants.BATTERY_LEVEL, Integer.parseInt(batteryLevelText.toString()));
+                        intent.putExtra(Constants.PHONE_NUMBER, mobileNumber);
+                        intent.putExtra(Constants.MESSAGE, message);
                         startService(intent);
                     } else {
                         Toast.makeText(BatterySendMessage.this.getApplicationContext(), "Battery level should be a number", Toast.LENGTH_LONG).show();

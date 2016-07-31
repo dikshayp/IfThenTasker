@@ -1,4 +1,4 @@
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.data;
 
 /**
  * Created by User847 on 4/22/2016.

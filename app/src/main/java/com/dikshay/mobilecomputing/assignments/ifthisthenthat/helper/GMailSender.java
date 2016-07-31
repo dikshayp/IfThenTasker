@@ -2,7 +2,7 @@
 /**
  * Created by User847 on 4/23/2016.
  */
-package com.dikshay.mobilecomputing.assignments.ifthisthenthat;
+package com.dikshay.mobilecomputing.assignments.ifthisthenthat.helper;
 
 import android.util.Log;
 
